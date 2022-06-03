@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Start system launchuna ekle-->
+    <node pkg="agv_smach" name="scan_to_point_tf" type="laser_to_pcl_transform"/>
+
+</launch>

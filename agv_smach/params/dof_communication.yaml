@@ -1,0 +1,37 @@
+---
+Communication:
+  udp_port: 55555
+  buffsize: 51200
+  header_size: 10
+  communication_hertz: 5
+  broadcast: False     # True: run udp_func()
+  server_ip: '192.168.1.122'    #'192.168.1.103'    #'192.168.1.101'        #'192.168.1.103'    #'192.168.1.38' #'192.168.1.103'
+  tcp_handshake_port: 4444
+
+TaskService:
+  service_name: 'agv_task_service'
+
+RobotInfo:
+  odom_sub_name: '/odom'
+  cmd_vel_sub_name: '/cmd_vel'
+  unit_digit: 4
+
+# Filtered Lazer
+PCL:
+  subscriber_name: '/tf_cloud'
+  unit_digit: 4
+  sample_rate: 5
+
+Map:
+  subscriber_name: '/map'
+
+GuiStatus:
+  publisher_name: '/gui_status'
+  publish_rate: 10
+  publish_count: 5
+
+BMS:
+  subscriber_name: '/battery'
+
+PosScore:
+  subscriber_name: '/pos_score'

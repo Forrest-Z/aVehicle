@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="test" default="false"/>
+
+	<include file="$(find agv_smach)/launch/viewer.launch"/> <!-- / only users pc -->
+	
+	<node pkg="agv_smach" type="main_sc_node.py" name="main_sc_node" output="screen"> 
+        <param name="test" value="$(arg test)"/>
+        <rosparam file="$(find agv_smach)/params/dof_task.yaml" command="load"/>
+    </node>
+
+</launch>

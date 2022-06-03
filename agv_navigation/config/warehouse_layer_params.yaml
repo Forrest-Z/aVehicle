@@ -1,0 +1,6 @@
+costmap_topic: '/agv_navigation/polygon_publisher/polygons'
+
+polygon_types:
+  highway: 1
+  restricted_area: 2
+  dock: 3

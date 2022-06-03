@@ -1,0 +1,7 @@
+<launch>
+
+    <node name="bms_unit_node" pkg="agv_bringup" type="bms_unit_node" output="screen">
+        <rosparam file="$(find agv_bringup)/config/bms.yaml" command="load" />     
+    </node>
+
+</launch>

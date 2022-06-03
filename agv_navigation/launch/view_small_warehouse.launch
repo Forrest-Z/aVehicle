@@ -1,0 +1,24 @@
+
+<launch>
+  <!-- Show Gazebo GUI on launch -->
+  <!--
+    <include file="$(find aws_robomaker_small_warehouse_world)/launch/small_warehouse.launch">
+  -->
+
+  <include file="$(find aws_robomaker_small_warehouse_world)/launch/view_small_warehouse.launch">
+    <!--arg name="gui" value="true"/-->
+  </include>
+
+    <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find agv_description)/urdf/agv.xacro'" />
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="agv_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model agv -z 0.05" />
+
+  <!-- ros_control racecar launch file >
+  <include file="$(find racecar_control)/launch/racecar_control.launch" ns="/"/-->
+
+  <!-- teleop -->
+  <!--include file="$(find racecar_control)/launch/teleop.launch" /-->
+
+</launch>

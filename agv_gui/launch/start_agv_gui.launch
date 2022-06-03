@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Start system launchuna ekle-->
+    <!--<node pkg="agv_gui" name="scan_to_point_tf" type="laser_to_pcl_transform"/>-->
+    <!-- <node pkg="agv_gui" type="rt_plot_mw.py" name="rt_plot_mw" output="screen"> -->
+    <!--<node pkg="agv_gui" type="graphics_view_deneme_mw_v2.py" name="graphics_view_deneme_mw_v2" output="screen" > -->
+    <node pkg="agv_gui" type="rt_plot_mw_v4.py" name="rt_plot_mw_v4" output="screen" >
+
+
+        <!-- <rosparam file="$(find kamil_navigation)/maps/cropped_free_area.yaml" command="load"/> -->
+    </node>
+</launch>

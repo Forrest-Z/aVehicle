@@ -1,0 +1,19 @@
+local_costmap: 
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 20.0 
+  publish_frequency: 20.0
+  resolution: 0.05
+  static_map: false
+  rolling_window: true
+  width: 4.0
+  height: 4.0
+  
+  inflation_layer:
+    inflation_radius: 0.2
+
+  plugins:
+   - {name: static_layer,        type: "costmap_2d::StaticLayer"}
+   - {name: warehouse_layer,     type: "warehouse::WarehouseLayer"}
+   - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
+   - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}

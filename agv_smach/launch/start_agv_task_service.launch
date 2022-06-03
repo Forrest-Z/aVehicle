@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<node pkg="agv_smach" type="task_srv_node.py" name="task_service_node" output="screen" >
+		<rosparam file="$(find agv_smach)/params/dof_task.yaml" command="load"/>
+	</node>
+
+</launch>

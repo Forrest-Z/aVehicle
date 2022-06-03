@@ -1,0 +1,27 @@
+fixed_frame: "odom"
+base_frame: "base_link"
+
+use_imu: true
+use_odom: true
+use_vel: false
+
+kf_dist_linear: 0.1 # 0.1
+kf_dist_angular: 0.5 # 0.175
+
+publish_tf: true
+publish_pose: false
+publish_pose_stamped: false
+publish_pose_with_covariance_stamped: true
+
+max_iterations: 10
+max_correspondence_dist: 0.3
+max_angular_correction_deg: 90 # 45.0
+max_linear_correction: 0.50
+epsilon_xy: 0.000001
+epsilon_theate: 0.000001
+outliers_maxPerc: 0.90
+
+restart: 0 # 0
+restart_threshold_mean_error: 0.01
+orientation_neighbourhood: 190 # 10
+use_point_to_line_distance: 1 # 1

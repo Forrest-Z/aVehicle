@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+    <rosparam file="$(find motor_control)/config/controllers.yaml" command="load"/>
+    <rosparam file="$(find motor_control)/config/joint_limits.yaml" command="load"/>
+
+    <node name="robot_hardware_interface" pkg="motor_control" type="robot_hardware_interface" output="screen">
+        <remap from="/mobile_robot/mobile_base_controller/cmd_vel" to="/cmd_vel" />
+        <remap from="/mobile_robot/mobile_base_controller/odom" to="/odom_motor" />
+    </node>
+    <!-- <node name="robot_motor" pkg="motor_control" type="robot_motor" output="screen" /> -->
+    <!-- node name="robot_motor_controller" pkg="motor_control" type="py_ads_controller.py" output="screen" /-->
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+        args="
+            /mobile_robot/joints_update
+            /mobile_robot/mobile_base_controller" >
+    </node>
+
+</launch>

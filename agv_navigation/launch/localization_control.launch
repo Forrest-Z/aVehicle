@@ -1,0 +1,8 @@
+<launch>
+
+<!-- ******** Imu Control *************** -->
+    <node pkg="agv_navigation" name="imu_yaw_control" type="imu_control" output="screen" />
+    <node pkg="agv_navigation" name="car_state_control" type="car_state" output="screen" />
+    <node pkg="agv_navigation" name="amcl_trigger" type="amcl_trigger" output="screen" />
+
+</launch>

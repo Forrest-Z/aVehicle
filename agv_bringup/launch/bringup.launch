@@ -1,0 +1,52 @@
+
+<launch>
+
+  <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find agv_description)/urdf/agv.xacro'" />
+
+
+  <!-- start omron lidar -->
+  <node pkg="omron_os32c_driver" type="omron_os32c_node" name="omron_os32c_node" if="$(env I_AM_ROBOT)">
+    <param name="host" value="192.168.214.50" />
+    <param name="frame_id" value="laser" />
+    <param name="start_angle" value="1.5708" />
+    <param name="end_angle" value="-1.5708" />
+    <param name="frequency" value="15.0" />
+    <!-- remap from="/scan" to="/scan_lidar" / --> 
+  </node>
+
+  <!-- add node to modify lidar -->
+  <!-- node pkg="agv_bringup" type="modify_scan.py" name="modify_scan" / -->
+
+  <!-- start imu sensors -->
+  <!-- node pkg="sparkfun_9dof_razor_imu_m0" type="driver_node" name="imu_node" /-->
+  <include file="$(find xsens_mti_driver)/launch/xsens_mti_node.launch" if="$(env I_AM_ROBOT)" />
+
+  <!--node name="controller_manager" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/agv" args="sol_onteker_1 sol_onbaglanti_1
+                                            sol_arkateker_1 sol_arkabaglanti_1
+                                            sag_arkateker_1 sag_arkabaglanti_1
+                                            sag_onteker_1 sag_onbaglanti_1
+                                            sag_teker_1 sol_teker_1
+                                            joint_state_controller"/-->
+
+<!-- Send joint values from simulation -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <!-- Motor Launch -->
+  <include file="$(find motor_control)/launch/motor_control.launch" if="$(env I_AM_ROBOT)" />
+
+  <!-- tf -->
+  <include file="$(find agv_bringup)/include/static_transforms.launch.xml" />
+
+  <!-- BMS -->
+  <!--include file="$(find agv_bringup)/launch/bms.launch.xml" if="$(env I_AM_ROBOT)" /-->
+
+  <!-- teleop -->
+  <include file="$(find agv_bringup)/launch/joystick_teleop.launch.xml" if="$(env I_AM_ROBOT)" />
+
+</launch>

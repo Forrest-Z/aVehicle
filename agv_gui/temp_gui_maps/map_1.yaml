@@ -1,0 +1,32 @@
+ITEMS:
+    Goal2:
+        Type: generic
+        Class: Goal
+        Heading: 270
+        Polygons:
+        - 0.6000000000000059
+        - -2.5999999999999943
+    Goal3:
+        Type: generic
+        Class: Goal
+        Heading: 0
+        Polygons:
+        - -4.315868886576477
+        - 5.885275754422484
+    Goal1:
+        Type: generic
+        Class: Goal
+        Heading: 180
+        Polygons:
+        - 0.8283038501560931
+        - 5.750000000000007
+MAP_INFO:
+    origin:
+    - -7.099999999999994
+    - -10.349999999999994
+    - 0.0
+    image: small_warehouse.pgm
+    pgm_file_path: /home/elcin/develop_ws/src/agv/agv_navigation/maps/small_warehouse.pgm
+    height: 417
+    width: 282
+    resolution: 0.05

@@ -1,0 +1,43 @@
+use_map_topic: true
+
+scan: "scan"
+odom_frame_id: "odom"
+base_frame_id: "base_link"
+global_frame_id: "map"
+tf_broadcast: false
+
+## Publish scans from best pose at a max of 10 Hz
+odom_model_type: "diff"
+gui_publish_rate: 20.0
+min_particles: 500 # default: 100
+max_particles: 10000 # default: 5000
+
+kld_err: 0.1 # 0.01
+kld_z: 0.5 # 0.99
+odom_alpha1: 0.5
+odom_alpha2: 0.5
+odom_alpha3: 0.8
+odom_alpha4: 0.2
+# odom_alpha5: 0.1 -- used only in omni type odom_model_type
+
+# ---- default laser params ----
+laser_max_beams: 30 # how many evenly-spaced beams in each scan to be used when updating the filter
+laser_max_range: 40.0
+laser_z_hit: 0.5 # mixture weight for the z_hit part of the model (0.95 - 0.5 first)
+laser_z_short: 0.05 # mixture weight for z_short part (0.1)
+laser_z_max: 0.05 # mixture weight for the x_max part (0.05)
+laser_z_rand: 0.5 # mixture weight for the z_rand part of the model (0.05)
+laser_sigma_hit: 0.2 # standard deviation for gaussian model used in z_hit part of the model
+laser_lambda_short: 0.1
+laser_model_type: "likelihood_field" # "likelihood_field" or "beam" or "likelihood_field_prob
+laser_likelihood_max_dist: 2.0
+
+update_min_d: 0.015
+update_min_a: 0.05
+
+resample_interval: 1
+
+## Increase tolerance because the computer can get quite busy 
+transform_tolerance: 0.1
+recovery_alpha_slow: 0.001 # When set to 0, it prevents random jumping for recovery
+recovery_alpha_fast: 0.1

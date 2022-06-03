@@ -1,0 +1,6 @@
+free_thresh: 0.196
+image: small_warehouse.pgm
+negate: 0
+occupied_thresh: 0.65
+origin: [-7.099999999999994, -10.349999999999994, 0.0]
+resolution: 0.05

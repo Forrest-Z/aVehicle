@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Start system launchuna ekle-->
+    <!--<node pkg="agv_gui" name="scan_to_point_tf" type="laser_to_pcl_transform"/>-->
+    <node pkg="agv_fleet_gui" type="rt_plot_mw_fleet.py" name="rt_plot_mw_fleet" output="screen" >
+
+        <!-- <rosparam file="$(find kamil_navigation)/maps/cropped_free_area.yaml" command="load"/> -->
+    </node>
+</launch>

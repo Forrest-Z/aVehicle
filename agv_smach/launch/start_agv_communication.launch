@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<include file="$(find agv_smach)/launch/laser_to_pcl_transform.launch" />	<!---->
+
+	<node pkg="agv_smach" type="socket_client_node.py" name="socket_client_node" output="screen" >
+		<rosparam file="$(find agv_smach)/params/dof_communication.yaml" command="load"/>
+	</node>
+
+</launch>

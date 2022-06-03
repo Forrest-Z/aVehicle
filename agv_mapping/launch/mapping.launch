@@ -1,0 +1,30 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <arg name="rviz" default="false"/>
+
+  <!-- start gmapping -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+
+    <param name="odom_frame" value="odom"/>
+    <param name="base_frame" value="base_link"/>
+    <param name="map_frame" value="map"/>
+
+    <!-- Set the resolution of the map -->
+    <param name="xmin" value="-150.0" />
+    <param name="xmax" value="150.0" />
+    <param name="ymin" value="-150.0" />
+    <param name="ymax" value="150.0" />
+
+    <!-- Process a scan each time the robot translates this far  -->
+    <param name="linearUpdate" value="0.1"/>
+
+    <!-- Process a scan each time the robot rotates this far  -->
+    <param name="angularUpdate" value="0.05"/>
+
+    <remap from="scan" to="/scan"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find agv_navigation)rviz/agv_navigation.rviz" if="$(arg rviz)"/> 
+
+</launch>

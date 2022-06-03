@@ -1,0 +1,85 @@
+<launch>
+
+  <arg name="rviz" default="false" />
+  <arg name="plot" default="false" />
+  <arg name="plot_states" default="false" />
+
+  <arg name="map_file_name" default="Ablok"/>
+  <!-- Use set costs or recreate them -->
+  <arg name="load_polygons" default="false" />
+  <arg name="save_polygons" default="false" />
+
+  <!--  ************** Global Parameters ***************  -->
+  <param name="/use_sim_time" value="true" if="$(eval env('I_AM_ROBOT') == 'false')"/>
+
+  <!-- *************** Set the debug vorbisty leve ********************  -->
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find agv_navigation)/config/rosconsole_config.conf"/>
+
+  <!--  ************** Navigation ***************  -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find agv_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find agv_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find agv_navigation)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find agv_navigation)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find agv_navigation)/config/dwa_local_planner.yaml" command="load" />        
+
+        <!-- Add warehouse layer parameters to this node -->
+        <rosparam file="$(find agv_navigation)/config/warehouse_layer_params.yaml" command="load" ns="global_costmap/warehouse_layer"/>
+
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <param name="planner_frequency" value="1.0" />
+        <param name="planner_patience" value="3.0" />
+        <param name="recovery_behavior_enabled" value="true" />
+
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+        <!-- Remap odom from odometry/filtered -->
+        <remap from="/odom" to="/odometry/filtered" />
+
+    </node>
+
+    <!--  ****** Maps *****  -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find agv_navigation)/maps/$(arg map_file_name).yaml" output="screen">
+            <param name="frame_id" value="map"/>
+    </node>
+
+    <!-- ********** AMCL ******** -->
+    <node pkg="amcl" type="amcl" name="amcl" output="screen">
+        <rosparam file="$(find agv_navigation)/config/amcl_params.yaml" command="load" />
+        <param name="initial_pose_x"            value="2.0"/>
+        <param name="initial_pose_y"            value="2.0"/>
+        <param name="initial_pose_a"            value="0"/>
+        <param name="tf_broadcast"              value="true" if="$(eval env('I_AM_ROBOT') == 'false')"/>
+    </node>
+
+    <!-- ************** Robot Localization All Transforms *********** -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_odom_to_base" clear_params="true" if="$(env I_AM_ROBOT)">
+        <rosparam file="$(find agv_navigation)/config/ekf_odom_to_base.yaml" command="load" />
+    </node>
+
+    
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_map_to_odom" clear_params="true" if="$(env I_AM_ROBOT)">
+        <rosparam file="$(find agv_navigation)/config/ekf_map_to_odom.yaml" command="load" />
+	<remap from="/odometry/filtered" to="/odometry/filtered2" />   
+ </node>
+ 
+
+    <!-- ****** Save and create polygons ************* -->
+    <node pkg="agv_navigation" name="polygon_publisher" type="publish_warehouse_polygons.py" output="screen" if="$(arg save_polygons)" />
+
+    <!-- ****** Reading polygons from a bag file ******  -->
+    <node pkg="agv_navigation" name="polygon_loader" type="load_polygons_from_bag.py" output="screen" if="$(arg load_polygons)"/>
+
+    <!-- ******* Publish Odom *************** -->
+    <node pkg="agv_navigation" name="publish_odom" type="publish_odom" output="screen" if="$(env I_AM_ROBOT)" />
+
+    <!-- ******** Initial Pose *************** -->
+    <node pkg="agv_navigation" name="initial" type="initial_pose" output="screen" if="$(eval env('I_AM_ROBOT') == 'false')"/>
+
+    <!-- ******** Calculate Pose Score *************** -->
+    <node pkg="agv_navigation" name="pos_score_node" type="class_position_score.py" output="screen" if="$(eval env('I_AM_ROBOT') == 'false')"/>
+
+    <!--  **************** Visualisation ****************  -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find agv_navigation)rviz/agv_navigation.rviz" if="$(arg rviz)"/>   
+
+</launch>

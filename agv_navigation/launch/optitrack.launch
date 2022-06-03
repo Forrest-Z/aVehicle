@@ -1,0 +1,6 @@
+<launch>
+
+<!-- ******** Imu Control *************** -->
+    <node pkg="agv_navigation" name="optitrack" type="optitrack" output="screen" />
+
+</launch>

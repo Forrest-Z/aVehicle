@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<node pkg="agv_testing" type="score_cases.py" name="agv_testing_node" output="screen" />
+
+</launch>

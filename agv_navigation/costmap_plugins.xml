@@ -1,0 +1,9 @@
+<library path="lib/libagv_navigation">
+
+  <class type="warehouse::WarehouseLayer" base_class_type="costmap_2d::Layer">
+  <description>
+  Warehouse layer, that follows certain topics and modifies costs on the global map.
+  </description>
+  </class>
+
+</library>

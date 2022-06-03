@@ -1,0 +1,2 @@
+bool car_is_stop
+bool battery_is_charhing

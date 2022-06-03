@@ -1,0 +1,253 @@
+/* ***************************** DOF ***************************** */
+/* The software improvements made are written in this file.	   		
+/*
+/* Example:
+/* 
+/* Version: 0.0.1
+/* Author: Kamil Suzan 
+/* Date  : 2021.05.05 12:08
+/* 
+/* - Version file created.
+/* - **** ***** ****** **
+/*
+/* Versions in different branches start with their own, set, branch codes and they follow
+/* version of the master when the development started.
+/* Branch codes are as follows:
+*  1:   black_timber
+/* 90:  agv_battery
+/* 240: agv_simulation
+/* 100: motor_control
+/* 110: agv_testing
+/* 120: localization_test
+/* 130: agv_navigation
+/* 180: agv_smach
+/* 190: agv_communication
+/* 200: agv_gui
+/* 210: agv_gui_fleet
+/* Example for agv_testing:
+/*
+/* Version: 110.0.0.1
+/* Author: Testing in Kamil Suzan 
+/* Date  : 2021.05.18 14.41
+/* 
+/* - Kamil Suzan was tested.
+/* - ***************
+/* As the versions increase, the code increases, not the version in master. So, when there
+/* is an another commit before merging to master, the version should be 111.0.0.1.
+/* ***************************** DOF ***************************** */
+
+Version: 0.0.20
+Author: Elcin Gencturk, Hakan Gencturk, Harun Saybak
+Date  : 2021.12.17 11.45
+
+- agv_gui v201.0.0.16 branch is merged into master branch.
+- Mapping tab is added into AGV GUI. The user can start mapping the
+environment after connected to robot and clicking Mapping button.
+- Change of colors and names of goals could be done now.
+_____________________________________________________________________
+
+Version: 0.0.19
+Author: Harun Saybak, Hakan Gencturk
+Date  : 2021.12.17 11.20
+
+- agv_navigation 130.0.0.17 branch is merged into master branch.
+- Navigation.lauch is updated for gazebo simulation correctly run.
+- polygon_publisher_node.py added in agv_smach packet for get highway,dock and restricted area data from gui.
+_____________________________________________________________________
+
+Version: 0.0.18
+Author: Hakan Gencturk, Harun Saybak
+Date : 2021.12.17 09.09
+- black_timber v1-3.0.0.17 branch is merged into master branch.
+- Delta Dop103wq hmi modbus tcp driver is added to agv_bringup.
+- HmiStatus is added to smach architecture.
+- Command position information of the buttons on the Hmi screen is added to the dof_task.yaml.
+_____________________________________________________________________
+
+Version: 0.0.17
+Author: Harun Saybak
+Date  : 2021.12.15 08.59
+
+- Amcl tf is set to disable.
+- The second EKF was made active.
+- The status of the vehicle is detected and written to the CarStateMsgs file.
+- When the vehicle stops, the Imu yaw_rate data is set to zero and Amcl's "request_nomotion_update"
+service is called.
+- Algorithm is developed that communication with udp from optirack.
+- v1-1.0.0.16(black_timber) version is merged into the this branch.
+- New AMR name is Black Timber
+- static_transforms file is updated.
+- Costmap footprint parameter is updated.
+- min_vel_trans parameter value is set to 0 in Dwa local planner.
+- Therefore, the vehicle does not move backwards.
+- motor_control parameter is updated. Max velocity is set to 1.12m/s.
+_____________________________________________________________________
+
+Version: 0.0.16
+Author: Harun Saybak
+Date  : 2021.11.18 16.31
+
+- Battery managment system is created.
+- Voltage, current, battery percentage, battery state and cell are read from Solion/SM4840 by modbus rtu rs485.
+- Battery state is added to tcp/ip com for sending gui.
+_____________________________________________________________________
+
+Version: 0.0.15
+Author: Elcin Erdogan
+Date  : 2021.11.17 16.26
+
+- v214.0.0.13 is merged into the master branch. 
+- Restricted Area generation spec is added into the GUI.
+- Position score value is started to be shown in GUI as real time. PositionScore
+thread is created.
+- rt_plot_mw_fleet.py is created.
+- agv_gui and agv_fleet_gui packages are organized.
+_____________________________________________________________________
+
+Version: 0.0.14
+Author: Harun Saybak, Elcin Erdogan
+Date  : 2021.11.01 09.00
+
+- I_AM_ROBOT param is added to static_transforms.launch.xml and navigation.launch 
+  files for imu to be false and use_sim_time to be true.
+- You must add "export I_AM_ROBOT=false" param in the .bashrc file if this program will run with simulation.  
+_____________________________________________________________________
+
+Version: 0.0.13 
+Author: Hakan Gencturk, Elcin Gencturk, Harun Saybak
+Date  : 2021.10.19 09.00
+
+- Communication architecture (TCP/IP and UDP) is added in systems.
+- Merged version 193.0.0.12 (agv_communication) into the master.
+- EKF debug param is changed false
+- Xsens imu is added
+- Route generation spec is added in GUI.
+- Generated highway, goal and route informations are sent to robot.
+- User can save his modified map in a .yaml file.
+- Fleet Manager window is generated to communicate with multi-AGVs.
+- Fleet spec is in rt_plot_mw_v4. rt_plot_mw_v3 is for single AGV.
+- Multi AGV distance calculation functions are added in package.
+- AGV Speech function added in smach_lib_sc.py
+- Move_base control is updated in agv_control_lib.py and smach_lib_sc.py nodes.
+- Connection errors are fixed on communication nodes.
+_______________________________________________________________
+
+Version: 0.0.12
+Author: Harun Saybak
+Date  : 2021.08.26 14.37
+
+- motor_control is updated. PyAds is removed and "C++ Ads" is used.
+- Communication with the motor was made 20hz. 
+- Added AdsLib library.
+_____________________________________________________________________
+
+Version: 0.0.11
+Author: Irmak Guzey & Harun Saybak
+Date  : 2021.08.06 09.37
+
+- Merged version 109.0.0.9 (motor_control) into the master branch.
+_____________________________________________________________________
+
+Version: 0.0.10
+Author: Hakan Gencturk
+Date  : 2021.05.17 17.00
+
+- Manual drive function is updated.
+- agv_gui had a duplicate of itself in its source directory, deleted the
+duplicate files. 
+_____________________________________________________________________
+
+Version: 0.0.9
+Author: Elcin Erdogan
+Date  : 2021.05.17 14.12
+
+- agv_gui is updated. Zoom and pan spec is added.
+- .gitignore is updated to ignore .vscode/settings.json file.
+_____________________________________________________________________
+
+Version: 0.0.8
+Author: Hakan Gencturk
+Date  : 2021.05.17 13.41
+
+- agv_navigation is updated. start_system.launch is added.
+_____________________________________________________________________
+
+Version: 0.0.7
+Author: Irmak Guzey
+Date  : 2021.05.17 13.19
+
+- Added gitignore file so that it wouldn't consider any changes in .pyc files and
+any changes in .vscode directory.
+_____________________________________________________________________
+
+Version: 0.0.6
+Author: Irmak Guzey
+Date  : 2021.05.17 11.59
+
+- Deleted the .pyc files. 
+_____________________________________________________________________
+
+Version: 0.0.5
+Author: Irmak Guzey
+Date  : 2021.05.17 10.33
+
+- agv_navigation is updated. Added the option to show debug logs in navigation. These
+logs are useful to detect when there is an error in navigation, local and global
+planners specifically.  
+_____________________________________________________________________
+
+Version: 0.0.4
+Author: Irmak Guzey
+Date  : 2021.05.12 13.33
+
+- agv_testing is updated. Fixed some issues and added the option to save
+the tests and added some test results. Added the launch file to start testing. 
+- agv_smach is updated. Added the option to test or not. Previously, Planning
+state was waiting for the testing to run, now, we can opt if we want to test the
+system or not. 
+- agv_navigation is updated. load_polygons parameter in navigation.launch is set to
+true in default.
+_____________________________________________________________________
+
+Version: 0.0.3
+Author: Elcin Erdogan, Hakan Gencturk, Harun Saybak, Irmak Guzey
+Date  : 2021.05.10 16.44
+
+- agv_gui is added.
+- agv_smach is updated.
+_____________________________________________________________________
+
+Version: 0.0.2
+Author: Elcin Erdogan, Hakan Gencturk, Harun Saybak, Irmak Guzey
+Date  : 2021.05.10 14.51
+
+- agv_smach is updated with Planning State.
+- agv_testing is added.
+- Moved the whole system from Kamil related packages to differential robot 
+based simulations. 
+_____________________________________________________________________
+
+Version: 0.0.1
+Author: Harun Saybak 
+Date  : 2021.05.10 11:40
+
+- joint_state_publisher was added to the bringup.launch.
+
+- Changes have been made to the agv.gazebo file. 
+	wheelSeparation = 0.667 , wheelDiameter = 0.2 
+- Remove teb planner. Trajectory planner added.
+_____________________________________________________________________
+
+Version: 0.0.0
+Author: Harun Saybak 
+Date  : 2021.05.05 12:10
+
+- agv_description created, the robot's design information 
+	is in this folder.
+- agv_bringup created, the software files for the robot's 
+	first run are here. TF, teleop etc.
+- agv_mapping created, this folder contains mapping package.
+	GMapping etc.
+- agv_navigation created, this folder contains navigation algorithm.
+- Version file created.
+_____________________________________________________________________

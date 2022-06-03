@@ -1,0 +1,345 @@
+<?xml version="1.0" ?>
+<robot name="agv" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find agv_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find agv_description)/urdf/agv.trans" />
+<xacro:include filename="$(find agv_description)/urdf/agv.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0009499272030577544 1.80565172797742e-05 0.08730255948503818"/>
+    <mass value="97.11796718956701"/>
+    <inertia ixx="6.13306" ixy="0.000761" ixz="-0.088939" iyy="8.865985" iyz="-2.3e-05" izz="12.779689"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sol_onteker_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.391121394773599e-07 -0.025499708971287893 -1.6736612096224235e-14"/>
+    <mass value="1.375066553593829"/>
+    <inertia ixx="0.000807" ixy="-0.0" ixz="-0.0" iyy="0.001095" iyz="-0.0" izz="0.000807"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32154 -0.308893 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_onteker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32154 -0.308893 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_onteker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sol_onbaglanti_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00779122429877982 2.91822961351329e-07 -0.011392326562195292"/>
+    <mass value="0.2583100625424449"/>
+    <inertia ixx="0.000128" ixy="-0.0" ixz="-3e-05" iyy="0.000127" iyz="0.0" izz="0.000165"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.355805 -0.283393 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_onbaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.355805 -0.283393 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_onbaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sol_arkateker_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.389021993010054e-07 -0.0254999749793276 -1.659783421814609e-14"/>
+    <mass value="1.3750665535938387"/>
+    <inertia ixx="0.000807" ixy="0.0" ixz="-0.0" iyy="0.001095" iyz="0.0" izz="0.000807"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.38846 -0.308876 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_arkateker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.38846 -0.308876 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_arkateker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sol_arkabaglanti_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.007791226329828815 2.738226428933288e-08 -0.01139232980378832"/>
+    <mass value="0.2583097173582451"/>
+    <inertia ixx="0.000128" ixy="-0.0" ixz="-3e-05" iyy="0.000127" iyz="0.0" izz="0.000165"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.354195 -0.283376 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_arkabaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.354195 -0.283376 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_arkabaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sag_arkateker_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.3890219924549427e-07 0.02550044296324616 -1.6729673202320328e-14"/>
+    <mass value="1.3750665535938333"/>
+    <inertia ixx="0.000807" ixy="0.0" ixz="-0.0" iyy="0.001095" iyz="0.0" izz="0.000807"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.38846 0.308911 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_arkateker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.38846 0.308911 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_arkateker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sag_arkabaglanti_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.007791226347676039 4.453260670778114e-07 -0.011392329806064154"/>
+    <mass value="0.25830971700592814"/>
+    <inertia ixx="0.000128" ixy="-0.0" ixz="-3e-05" iyy="0.000127" iyz="0.0" izz="0.000165"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.354195 0.283411 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_arkabaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.354195 0.283411 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_arkabaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sag_onteker_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.3911213858918146e-07 0.025499708971285895 -1.6882328868206287e-14"/>
+    <mass value="1.375066553593832"/>
+    <inertia ixx="0.000807" ixy="-0.0" ixz="-0.0" iyy="0.001095" iyz="-0.0" izz="0.000807"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32154 0.308893 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_onteker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32154 0.308893 0.0615"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_onteker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sag_onbaglanti_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.007791224298779764 -2.90234464406236e-07 -0.011392326562195779"/>
+    <mass value="0.2583100625424476"/>
+    <inertia ixx="0.000128" ixy="-0.0" ixz="-3e-05" iyy="0.000127" iyz="0.0" izz="0.000165"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.355805 0.283393 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_onbaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.355805 0.283393 0.0025"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_onbaglanti_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sag_teker_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.57278015069096e-06 0.005480805112943021 8.348877145181177e-16"/>
+    <mass value="8.066726834559544"/>
+    <inertia ixx="0.026464" ixy="1e-06" ixz="0.0" iyy="0.05025" iyz="0.0" izz="0.026463"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.369751 -0.0"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_teker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.369751 -0.0"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sag_teker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sol_teker_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="6.573038100725625e-06 -0.005480805112945519 1.1013412404281553e-15"/>
+    <mass value="8.066726834559521"/>
+    <inertia ixx="0.026464" ixy="1e-06" ixz="-0.0" iyy="0.05025" iyz="0.0" izz="0.026463"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.369751 -0.0"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_teker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.369751 -0.0"/>
+    <geometry>
+      <mesh filename="package://agv_description/meshes/sol_teker_1.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev11" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.034265 0.0255 -0.059"/>
+  <parent link="sol_onbaglanti_1"/>
+  <child link="sol_onteker_1"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rev12" type="continuous">
+  <origin rpy="0 0 0" xyz="0.355805 0.283393 -0.0025"/>
+  <parent link="base_link"/>
+  <child link="sol_onbaglanti_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Rev13" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.034265 0.0255 -0.059"/>
+  <parent link="sol_arkabaglanti_1"/>
+  <child link="sol_arkateker_1"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rev14" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.354195 0.283376 -0.0025"/>
+  <parent link="base_link"/>
+  <child link="sol_arkabaglanti_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Rev15" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.034265 -0.0255 -0.059"/>
+  <parent link="sag_arkabaglanti_1"/>
+  <child link="sag_arkateker_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev16" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.354195 -0.283411 -0.0025"/>
+  <parent link="base_link"/>
+  <child link="sag_arkabaglanti_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Rev17" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.034265 -0.0255 -0.059"/>
+  <parent link="sag_onbaglanti_1"/>
+  <child link="sag_onteker_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev18" type="continuous">
+  <origin rpy="0 0 0" xyz="0.355805 -0.283393 -0.0025"/>
+  <parent link="base_link"/>
+  <child link="sag_onbaglanti_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.369751 0.0"/>
+  <parent link="base_link"/>
+  <child link="sag_teker_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.369751 0.0"/>
+  <parent link="base_link"/>
+  <child link="sol_teker_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+
+<!-- Laser -->
+
+<link name="hokuyo">
+    <pose>0 0 0.1 0 0 0</pose>
+
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="0.0001" ixy="0" ixz="0"
+          iyy="0.0001" iyz="0"
+          izz="0.0001"
+      />
+    </inertial>
+
+    <collision name='hokuyo_collision'>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0 0.0 0.0"/>
+      </geometry>
+    </collision>
+
+    <visual name='hokuyo_visual'>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <geometry>
+         <mesh filename="package://agv_description/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+<joint type="fixed" name="hokuyo_joint">
+    <origin xyz="0.66 0 0.12" rpy="3.14 0 0"/> <!-- 0.15 -->
+    <child link="hokuyo"/>
+    <parent link="base_link"/>
+  </joint>
+
+</robot>

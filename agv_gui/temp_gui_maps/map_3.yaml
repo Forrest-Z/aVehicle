@@ -1,0 +1,44 @@
+ROUTES: {}
+ITEMS:
+    Hw1:
+        Type: generic
+        Class: Highway
+        Heading: 33
+        Polygons:
+        -   - -0.38215808805027773
+            - 1.3808309534703938
+        -   - 1.0016483490596721
+            - 0.4821765456955962
+        -   - -2.4568095232857496
+            - -4.843381560757846
+        -   - -3.840615960395699
+            - -3.9447271529830497
+    Goal1:
+        Type: generic
+        Class: Goal
+        Heading: 0
+        Polygons:
+        -   - -4.1741396761133585
+            - 1.4680668016194307
+    RA1:
+        Type: generic
+        Class: Restricted area
+        Polygons:
+        -   - -2.163056680161943
+            - 7.7056012145749015
+        -   - 1.5454291497975694
+            - 6.8427914979757105
+        -   - 0.2562388663967594
+            - 3.930702429149802
+        -   - -3.1558906882591087
+            - 4.865649797570855
+MAP_INFO:
+    origin:
+    - -7.05
+    - -10.399999999999999
+    - 0.0
+    image: warehouse.pgm
+    pgm_file_path: /home/elcin/develop_ws/src/agv/agv_navigation/maps/warehouse.pgm
+    height: 419
+    width: 278
+    resolution: 0.05
